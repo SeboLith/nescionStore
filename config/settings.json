@@ -1,0 +1,6 @@
+{
+  "public": {
+    "STRIPE_PUBLISHABLE_KEY": "pk_test_MVrdyGVSvBGaxCt5DC9PmbkM"
+  },
+  "STRIPE_SECRET_KEY": "sk_test_T5QA2PsYVdyQLsPvJQJac1I7"
+}

@@ -1,0 +1,82 @@
+<template name="cart">
+  <div id="cart-modal" class="reveal-modal xlarge" data-reveal>
+    <nav class="cart-header" data-topbar role="navigation">
+      <h2 id="cart-header">Shopping Cart</h2>
+    </nav>
+    <div class="content">
+      {{#if cartValue}}
+        <ul id="cart-products">
+          {{#each items}}
+          <li class="cart-product item-{{_id}}">
+            <input class="cartQuantity" type="hidden" value="{{cartQuantity}}">
+            <input class="itemTotal" type="hidden" value="{{itemTotal}}">
+            <div class="product-container row">
+              <div class="product-image no-h-margin large-3 medium-3 small-12 columns">
+                <img src="{{smallSrc}}" alt="">
+              </div>
+              <div class="product-info no-h-paddding large-8 medium-7 small-12 columns">
+                <h6 class="left large-12 medium-12 small-12">
+                  <a class="modal-title" href="{{pathFor 'productDetail' _id=this._id }}" title="{{title}}">
+                    {{title}}
+                  </a>
+                </h6>
+                <div class="cart-item-detail large-12 medium-12 small-12">
+                  <hr>
+                  <span class="price-label-container large-4 medium-4 small-4 columns">Price</span>
+                  <span class="remove-spacer large-4 medium-4 small-4 columns"></span>
+                  <span class="dropdown-label-container large-4 medium-4 small-4 columns">Quantity</span>
+                  <span class="price-container large-4 medium-4 small-4 columns">${{currentPrice}}</span>
+                  <span class="price-container large-4 medium-4 small-4 columns">
+                    <button type="submit" class="btn-red remove-item" title="Remove">
+                      <span class="">Remove</span>
+                    </button>
+                  </span>
+                  <span class="dropdown-container large-4 medium-4 small-4 columns">
+                    <select name="quantity" data-item-id="{{_id}}" data-quantity="{{quantity}}" autocomplete="off" class="item-select" id="select-{{_id}}">
+                      <option value="1" class="quantity-option"> 1 </option>
+                      <option value="2" class="quantity-option"> 2 </option>
+                      <option value="3" class="quantity-option"> 3 </option>
+                      <option value="4" class="quantity-option"> 4 </option>
+                      <option value="5" class="quantity-option"> 5 </option>
+                      <option value="6" class="quantity-option"> 6 </option>
+                      <option value="7" class="quantity-option"> 7 </option>
+                      <option value="8" class="quantity-option"> 8 </option>
+                      <option value="9" class="quantity-option"> 9 </option>
+                      <option value="10" class="quantity-option"> 10 </option>
+                      <option value="11" class="quantity-option"> 11 </option>
+                      <option value="12" class="quantity-option"> 12 </option>
+                      <option value="13" class="quantity-option"> 13 </option>
+                      <option value="14" class="quantity-option"> 14 </option>
+                      <option value="15" class="quantity-option"> 15 </option>
+                      <option value="16" class="quantity-option"> 16 </option>
+                      <option value="17" class="quantity-option"> 17 </option>
+                      <option value="18" class="quantity-option"> 18 </option>
+                      <option value="19" class="quantity-option"> 19 </option>
+                      <option value="20" class="quantity-option"> 20 </option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <div class="empty-cart">
+        </div>
+      {{/if}}
+    </div>
+    <div class="checkout row">
+      <div class="total-price no-l-padding large-6 medium-6 small-6 columns">
+        <span class="price-label-container left margin-r5">Total:</span>
+        <span class="price-container left">${{cartTotal}}</span>
+      </div>
+      <div class="large-6 medium-6 small-6 columns no-r-padding">
+        <button type="submit" id="checkout-btn" class="btn {{button.color}} right" title="Select">
+          <span class="">Checkout</span>
+        </button>
+      </div>
+    </div>
+    <a class="close-reveal-modal sticky">&#215;</a>
+  </div>
+</template>

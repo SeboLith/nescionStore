@@ -1,0 +1,27 @@
+<template name="email">
+  <div id="email-modal" class="reveal-modal xlarge" data-reveal>
+    <form>
+      <div class="row">
+        <div class="email-conf">
+          <div class="large-12 medium-12 small-12 columns">
+            <h5>Please enter a valid email address</h5>
+          </div>
+          <div class="padding-h50 large-6 medium-6 small-12 columns">
+            <input type="text" id="first-email" class="{{errorOne}}" placeholder="email" />
+            <small class="{{errorOne}}">{{#if errorOne}} {{ firstEmailErrorMessage }} {{/if}}</small>
+          </div>
+          <div class="padding-h50 large-6 medium-6 small-12 columns">
+            <input type="text" id="second-email" class="{{errorTwo}}" placeholder="confirm email" />
+            <small class="{{errorTwo}}">{{#if errorTwo}} {{ secondEmailErrorMessage }} {{/if}}</small>
+          </div>
+          <div class="btn-container large-12 medium-12 small-12">
+            <button type="submit" class="email-submit btn green right" title="Log In">
+              <span>Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <a class="close-reveal-modal sticky">&#215;</a>
+  </div>
+</template>

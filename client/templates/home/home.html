@@ -1,0 +1,74 @@
+<!-- home page -->
+<template name="home">
+  {{> topSlider }}
+  {{> searchResults }}
+</template>
+
+<template name="itemContainer">
+  <li class="item-container">
+    <div class="item-img-wrapper">
+      <div class="item-img">
+        <a href="{{pathFor 'productDetail' _id=this._id }}" title="{{title}}">
+          <img src="{{smallSrc}}" alt="{{title}}">
+        </a>
+      </div>
+    </div><!-- .item-img-wrapper -->
+    <div class="item-info">
+      <div class="item-title">
+        <h2>
+          <a href="{{pathFor 'productDetail' _id=this._id }}" title="{{title}}">
+            <i class="fa fa-angle-right"></i>
+            {{title}}
+          </a>
+        </h2>
+      </div>
+      <div class="item-description">
+        {{description}}
+      </div>
+      <h3 class="item-price">
+        <span  class="price-currency">${{currentPrice}}</span>
+      </h3><!-- item-price -->
+    </div><!-- item-info -->
+  </li><!-- .container -->
+</template>
+
+<template name="spinnerContainer">
+  <li class="item-container">
+    <div class="item-img-wrapper">
+      <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </div><!-- .item-img-wrapper -->
+    <div class="item-info">
+      <h2>loading ...</h2>
+    </div><!-- item-info -->
+  </li><!-- .container -->
+</template>
+
+<template name="searchResults">
+  <div class="results-container row">
+    <div class="search-results large-12 medium-12 columns">
+      <h2>Popular Products</h2>
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        {{#if auctionItemsLoaded}}
+        {{#each items}}
+        {{> itemContainer}}
+        {{/each}}
+        {{else}}
+        {{> spinnerContainer}}
+        {{/if}}
+      </ul>
+      {{> pagination}}
+    </div><!-- .search-results -->
+  </div>
+</template>
+
+<template name="pagination">
+  <nav class="pagination-centered">
+    <ul class="auctionItems pagination">
+      <li class="arrow {{noPrev}}"><a href="">&laquo; Previous</a></li>
+      {{#each pages}}
+      <li class={{isCurrent}}><a href="">{{page}}</a></li>
+      {{/each}}
+      <li class="arrow {{noNext}}"><a href="">Next &raquo;</a></li>
+    </ul>
+  </nav>
+</template>

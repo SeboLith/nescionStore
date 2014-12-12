@@ -1,0 +1,104 @@
+<template name="checkout">
+  <div class="checkout-container row {{navContent}}">
+    <ul>
+      {{#each savedCartItems}}
+      <li class="cart-product">
+        <div class="product-container row">
+          <div class="product-image no-h-margin large-3 medium-3 small-3 columns">
+            <img src="{{smallSrc}}" alt="">
+          </div>
+          <div class="product-info no-h-paddding large-8 medium-8 small-8 columns">
+            <h6 class="left large-12 medium-12 small-12">{{title}}</h6>
+            <div class="cart-item-detail large-12 medium-12 small-12">
+              <hr>
+              <span class="large-4 medium-4 small-4 columns">Price</span>
+              <span class="large-4 medium-4 small-4 columns">Quantity</span>
+              <span class="large-4 medium-4 small-4 columns">Subtotal</span>
+              <span class="checkout-price large-4 medium-4 small-4 columns">${{currentPrice}}</span>
+              <span class="large-4 medium-4 small-4 columns">{{cartQuantity}}</span>
+              <span class="checkout-price large-4 medium-4 small-4 columns">${{itemTotal}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+    {{#if savedCartItems}}
+    <div class="checkout-total">
+      <h4>Order Total:<span>${{totalPrice}}</span></h4>
+    </div>
+    <div class="final-process">
+      <!-- {{> getCheckoutContent}} -->
+      {{> paymentForm}}
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="paymentForm">
+  <div class="checkout-form large-7 medium-12 small-12 columns">
+    <div class="no-h-padding cards-accepted large-5 medium-5 small-4 columns">
+      We accepts all major credit & debit cards.
+    </div>
+    <div class="payment-icons large-7 medium-7 small-8 columns padding-r5">
+      <img src="/img/icons/payment_icons.png" alt="">
+    </div>
+    <form class=" margin-t70" method="POST" id="payment-form">
+      <span class="payment-errors"></span>
+
+      <div class="row">
+        <label>
+          <div class="form-label large-4 medium-4 small-4 columns no-h-padding">
+          <span>Card Number</span>
+        </div>
+        <div class="large-8 medium-8 small-8 columns padding-r20">
+          <input type="text" size="20" data-stripe="number"/>
+        </div>
+        </label>
+      </div>
+
+      <div class="row">
+        <label>
+          <div class="form-label large-4 medium-4 small-4 columns no-h-padding">
+            <a class="cvc padding-r15" href="" data-reveal-id="cvc-modal">what's this?</a><span>CVC</span>
+          </div>
+          <div class="large-3 medium-3 small-3 columns no-r-padding">
+            <input type="text" size="4" data-stripe="cvc"/>
+          </div>
+          <div class="date-separator large-1 medium-1 small-1 columns no-h-padding">Zip</div>
+          <div class="large-4 medium-4 small-4 columns padding-r20 no-l-padding">
+            <input type="text" size="4" data-stripe="exp-year" placeholder="Billing Zip Code"/>
+          </div>
+        </label>
+      </div>
+
+      <div class="row">
+        <label>
+          <div class="form-label large-4 medium-4 small-4 columns no-h-padding">
+            <span>Expiration Date</span>
+          </div>
+          <div class="large-3 medium-3 small-3 columns no-r-padding">
+            <input type="text" size="2" data-stripe="exp-month" placeholder="month"/>
+          </div>
+          <div class="date-separator large-1 medium-1 small-1 columns no-h-padding">/</div>
+          <div class="large-4 medium-4 small-4 columns padding-r20 no-l-padding">
+            <input type="text" size="4" data-stripe="exp-year" placeholder="year"/>
+          </div>
+        </label>
+      </div>
+      <button type="submit" id="order-btn" class="btn green right margin-t15 margin-r5" title="Place Order">
+        <span class="">Place Order</span>
+      </button>
+    </form>
+  </div>
+  <div class="hide-for-medium-down confidence large-5 columns no-r-padding">
+    <img src="/img/confidence.png" alt="">
+  </div>
+</template>
+
+<template name="cvc">
+  <div id="cvc-modal" class="reveal-modal" data-reveal>
+    <img src="/img/cvc.jpg" alt="">
+    <a class="close-reveal-modal sticky">&#215;</a>
+  </div>
+</template>

@@ -1,0 +1,17 @@
+<!-- shared layout -->
+<template name="container">
+  {{> cart }}
+  {{> email }}
+  {{> cvc }}
+  <div class="wrap off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      {{> offCanvas }}
+      <section class="main-section">
+        {{> topNav }}
+        {{> yield region="mainSection"}}
+      </section>
+      <a class="exit-off-canvas"></a>
+      {{> footer }}
+    </div>
+  </div>
+</template>

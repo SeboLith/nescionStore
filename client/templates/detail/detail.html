@@ -1,0 +1,48 @@
+<!-- detail page -->
+<template name="productDetail">
+  <div class="results-container detail row {{navContent}}">
+    <h3 class="detail-header">Product Detail</h3>
+    <div class="product-image large-4 medium-4 columns">
+      <img src="{{mediumSrc}}" alt="{{title}}">
+    </div><!-- .item-img-wrapper -->
+    <div class="product-info large-7 medium-7 columns">
+      <h4>{{title}}</h4>
+      <div class="item-price">
+        <p><span class="dis-desc">List Price:</span><span class="margin-l5 msrp-val">${{msrp}}</span></p>
+        <p><span class="desc">Price:</span><span class="margin-l5 val">${{currentPrice}}</span></p>
+        <p><span class="dis-desc">You Save:</span><span class="margin-l5 val">${{item.discountAmount}}&nbsp;({{item.discountPercent}}%)</span></p>
+        <p class="desc">Condition:
+        {{#if item.refurbished}}
+          <span data-tooltip class="margin-l5 black has-tip" title="An item that has been professionally restored to working order by a manufacturer or manufacturer-approved vendor. This means the product has been inspected, cleaned, and repaired to meet manufacturer specifications and is in excellent condition.">{{condition}}</span>
+        {{else}}
+          <span data-tooltip class="margin-l5 black has-tip" title="A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is applicable).">{{condition}}</span>
+        {{/if}}
+        </p>
+
+        <p class="{{item.inStock}}">In Stock</p>
+        <button type="submit" class="btn {{item.add}} right" title="Select" {{item.disabled}}>
+          <span class="">Add to Cart</span>
+        </button>
+        {{#if item.available}}
+        <p class="black">
+          <span data-tooltip class="has-tip" title="We guarantee next-day delivery to all major cities. Delivery to remote locations may not be available.">Next Day Delivery</span>
+        </p>
+        {{/if}}
+      </div>
+      <div class="item-features">
+        <h6>Features</h6>
+        <ul>
+          {{#each features}}
+          <li>
+            {{this}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="item-summary">
+        <h6>Description</h6>
+        <p>{{description}}</p>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,12 @@
+{
+  "name": "onlineStore",
+  "author": "Reginald Mathieu",
+  "license": "RESTRICTED",
+  "version": "0.0.0",
+  "repository": {},
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "engines": {},
+  "scripts": {}
+}
